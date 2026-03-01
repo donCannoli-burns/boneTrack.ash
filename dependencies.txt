@@ -1,1 +1,1 @@
-https://github.com/lii2/zlib.ash.git releases
+https://github.com/lii2/zlib.ash.git
