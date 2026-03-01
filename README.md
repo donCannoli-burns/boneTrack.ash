@@ -7,7 +7,7 @@ Tracks and Logs: "Daily-Specials" meat per bone & value per bone. && "Average" m
   Note: "Average" meat per bone and value per bone is generated from the items you have logged with boneTrack.
   it will take a wihile to reflect a true number.
 
-To install the script run: " git checkout https://github.com/donCannoli-burns/boneTrack.ash.git " into the cli
+To install the script run: " git checkout https://github.com/donCannoli-burns/boneTrack.ash.git  " into the cli
   
 Logs all the collected data in KOL/data/bonetrack/ .
 
