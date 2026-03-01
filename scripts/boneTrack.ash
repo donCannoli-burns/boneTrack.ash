@@ -1,6 +1,5 @@
 script "boneTrack.ash"
 notify "donCannoli"
-import zlib
 
 // Text in CLI is color coded
 int trigger_MallPrice_High = 15000000;     // Set Value To Trigger Message Green
@@ -198,11 +197,12 @@ void main() {
 		print(noBuyMessage15, 'navy');
 	print(boneMessageBreak20, 'orange');
 	print(`> As of : [` + today_to_string() + `]`, `navy`);
-	print(`> Average "Daily Special" Meat / Per / Knucklebone : [` + rnum(averageMPB) + `]`, `navy`);
-	print(`> Average "Daily Special" Value / Per / Knucklebone : [` + rnum(averageVPB) + `]`, `navy`);
+	print(`> Average "Daily Special" Meat / Per / Knucklebone : [` + to_string(averageMPB, "%.3f") + `]`, `navy`);
+	print(`> Average "Daily Special" Value / Per / Knucklebone : [` + to_string(averageVPB, "%.3f") + `]`, `navy`);
 	print(boneMessageBreak20, 'orange');
 	print(boneMessageEnd, 'navy');
 	// auto-lauch wiki page
 	if ((get_property(`boneTrackEnableWiki`)).to_string() == `true`)
 		cli_execute(`lookup { (daily_Special) }`);
 }
+
