@@ -56,9 +56,9 @@ boolean OwnDailySpecial(item x) { //done
           string boneMessage1 = `|==============|> KNUCKLEBONE DAILY BREAKDOWN <|=============|`;
           string totalBonesMessage2  = `> Total Knucklebones in Inventory:  [`+currentTotalBones+`]`;     
           string dailyBonesMessage3a  = `> Daily Knucklebone Collection:`;  
-          string dailyBonesMessage3b  = `>--> "Adv-Bones":  [`+totalBonesCollected+`/95]`;
-          string dailyBonesMessage3c  = `>--> "Rest-Bones":  [`+collectedRestBones+`/5]`;
-          string collectedBonesMessage4  = `> `+allBonesCollected+`/100] Knucklebones Collected For The Day.`;
+          string dailyBonesMessage3b  = `> "Adv-Bones":  [`+totalBonesCollected+`/95]`;
+          string dailyBonesMessage3c  = `> "Rest-Bones":  [`+collectedRestBones+`/5]`;
+          string collectedBonesMessage4  = `> [`+allBonesCollected+`/100] Knucklebones Collected For The Day.`;
           string priceBoneMessage5  = `> The Daily Special Is: [`+(daily_Special)+`].`;
           string priceBoneMessage6 = `> Knucklebone Price Of: [`+specialBonePrice+`] Knucklebones.`;
           string priceMallMessage7 = `> Mall Price Of: [`+specialMallPrice+`] Meat.`;
@@ -201,6 +201,7 @@ if ((get_property(`boneTrackEnableWiki`)).to_string() == `true`){
   else { exit; }
 
 }
+
 
 
 
