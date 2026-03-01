@@ -1,5 +1,6 @@
 script "boneTrack.ash"
-notify "donCannoli"
+notify "donCannoli";
+import zlib
 
 // Text in CLI is color coded
 int trigger_MallPrice_High = 15000000;     // Set Value To Trigger Message Green
@@ -17,9 +18,11 @@ boolean OwnDailySpecial(item x) {
 
 void main() {
 	// confirms wiki launch at first run.                                                                                              //Note To reset: "set boneTrackEnableWiki=" ";
-	string WikiPrompt = `> Set<true> To Enable Auto - Launch WIKI.KOL "Daily-Special" Page.\n > Set<false> To Disable Auto - Launch.\n > *Note *After Inital Set - Up, Use : "set boneTrackEnableWiki=<false/true>".\n > Set : true | false`;
+	string WikiPrompt = `Enable auto-launch of KoL Wiki\'s SoCP Daily Special page?\n` +
+						`Note: after inital setup, reset this with CLI:\n` +
+						` "set boneTrackEnableWiki = [false|true]"`;
 	if (get_property(`boneTrackEnableWiki`) == "") {
-		set_property("boneTrackEnableWiki", user_prompt(WikiPrompt));
+		set_property("boneTrackEnableWiki", user_confirm(WikiPrompt));
 		if (get_property(`boneTrackEnableWiki`) == "true")
 			print(`Setting AutoLaunch[ON]`, `green`);
 		print(`"set boneTrackEnableWiki = false" to turn off wiki autolaunch.`, `navy`);
@@ -64,7 +67,7 @@ void main() {
 	string priceBoneMessage5 = `> The Daily Special Is : [` + (daily_Special) + `].`;
 	string priceBoneMessage6 = `> Knucklebone Price Of : [` + specialBonePrice + `] Knucklebones.`;
 	string priceMallMessage7 = `> Mall Price Of : [` + specialMallPrice + `] Meat.`;
-	string canAffordMessage8 = `'> You [CAN] Afford The Daily Special: ` + (daily_Special) + `!`; string cannotAffordMessage10 = `'> You [CANNOT] Afford The Daily Special: ` + (daily_Special) + `!`; string boneMessage11 = `> That\'s A Return Of: [` + meatPerBone + `] Meat/Per/Pnucklebone!`; string boneMessage12 = `> A Value Of[` + rnum(DS_Value) + `% ] Per / Knucklebone.(SpecialMallPrice / MeatPerBone) / (100)`;
+	/**/string canAffordMessage8 = `'> You [CAN] Afford The Daily Special: ` + (daily_Special) + `!`; string cannotAffordMessage10 = `'> You [CANNOT] Afford The Daily Special: ` + (daily_Special) + `!`; string boneMessage11 = `> That\'s A Return Of: [` + meatPerBone + `] Meat/Per/Pnucklebone!`; string boneMessage12 = `> A Value Of[` + rnum(DS_Value) + `% ] Per / Knucklebone.(SpecialMallPrice / MeatPerBone) / (100)`;
 	string ownDSMessage13 = `> We Own[` + DSowned + `] ` + (daily_Special);
 	string yesBuyMessage14 = `> We[HAVE] Purchased ` + (daily_Special) + ` With Knucklebones.`;
 	string noBuyMessage15 = `> We Have[NOT] Purchased ` + (daily_Special) + ` With Knucklebones.`;
@@ -205,4 +208,3 @@ void main() {
 	if ((get_property(`boneTrackEnableWiki`)).to_string() == `true`)
 		cli_execute(`lookup { (daily_Special) }`);
 }
-
