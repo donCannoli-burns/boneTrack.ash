@@ -1,5 +1,5 @@
 script "boneTrack.ash"
-notify "donCannoli";
+notify "donCannoli"
 import zlib
 
 // Text in CLI is color coded
@@ -10,69 +10,69 @@ int trigger_MeatPerBone_Low = 1000;        // Set Value To Trigger Message Red
 int trigger_ValuePerBone_High = 15;        // Set Value To Trigger Message Green
 int trigger_ValuePerBone_Low = 7;          // Set Value To Trigger Message Red
 
-// confirms wiki launch at first run.                                                                                              //Note To reset: "set boneTrackEnableWiki=" ";
-string WikiPrompt = `> Set<true> To Enable Auto - Launch WIKI.KOL "Daily-Special" Page.\n > Set<false> To Disable Auto - Launch.\n > *Note *After Inital Set - Up, Use : "set boneTrackEnableWiki=<false/true>".\n > Set : true | OR | false  `;
-if (get_property(`boneTrackEnableWiki`) == " ") {
-	set_property("boneTrackEnableWiki", user_prompt(WikiPrompt));
-	if (get_property(`boneTrackEnableWiki`) == "true")
-		print(`Setting AutoLaunch[ON]`, `green`);
-	print(`"set boneTrackEnableWiki=false" to turn off wiki autolaunch.`, `navy`);
-	if (get_property(`boneTrackEnableWiki`) == "false") {
-		print(`Setting AutoLaunch[OFF]`, `orange`);
-		print(`"set boneTrackEnableWiki=true" to turn on wiki autolaunch.`, `navy`);
-	}
-}
-
 // checks everywhere for ownership
 boolean OwnDailySpecial(item x) {
 	print(`> Testing ownership of[` + x + `]`, `navy`);
 	return (available_amount(x) + closet_amount(x) + storage_amount(x) + display_amount(x) != 0);
 }
 
-item kb = $item[knucklebone];
-item dailySpecial = get_property("_crimboPastDailySpecialItem").to_item();
-boolean tradable = is_tradeable(dailySpecial);
-boolean yesBuy_Special = get_property("_crimboPastDailySpecial").to_boolean();
-int lifeNum = get_property("ascensionsToday").to_int();
-int legNum = lifeNum + 1;
-int buy_special = yesBuy_Special.to_int();
-int item_number = get_property("_crimboPastDailySpecialItem").to_int();
-int specialMallPrice = mall_price(dailySpecial).to_int();
-int specialBonePrice = get_property("_crimboPastDailySpecialPrice").to_int();
-int DSowned = item_amount(dailySpecial).to_int();
-int currentTotalBones = (available_amount(kb) + closet_amount(kb) + storage_amount(kb) + display_amount(kb));
-int collectedBones = get_property("_knuckleboneDrops").to_int();
-int collectedRestBones = get_property(`_knuckleboneRests`).to_int();
-int totalBonesCollected = to_int(collectedBones - collectedRestBones);
-int allBonesCollected = to_int(collectedBones);
-float neededBones = to_int(95 - collectedBones);
-float neededRestBones = to_int(5 - collectedRestBones);
-float totalBonesNeeded = to_int(neededBones + neededRestBones);
-float meatPerBone = to_int(specialMallPrice / specialBonePrice);
-float xy = modifier_eval(specialMallPrice / (meatPerBone + 1));
-float DS_Value = modifier_eval(xy / 100);
-string leg_num = 'Leg' + legNum;
-string daily_Special = (item_number.to_item());
+void main() {
+	// confirms wiki launch at first run.                                                                                              //Note To reset: "set boneTrackEnableWiki=" ";
+	string WikiPrompt = `> Set<true> To Enable Auto - Launch WIKI.KOL "Daily-Special" Page.\n > Set<false> To Disable Auto - Launch.\n > *Note *After Inital Set - Up, Use : "set boneTrackEnableWiki=<false/true>".\n > Set : true | false`;
+	if (get_property(`boneTrackEnableWiki`) == "") {
+		set_property("boneTrackEnableWiki", user_prompt(WikiPrompt));
+		if (get_property(`boneTrackEnableWiki`) == "true")
+			print(`Setting AutoLaunch[ON]`, `green`);
+		print(`"set boneTrackEnableWiki = false" to turn off wiki autolaunch.`, `navy`);
+		if (get_property(`boneTrackEnableWiki`) == "false") {
+			print(`Setting AutoLaunch[OFF]`, `orange`);
+			print(`"set boneTrackEnableWiki = true" to turn on wiki autolaunch.`, `navy`);
+		}
+	}
 
-// Message strings
-string boneMessage1 = `|= == == == == == == = | > KNUCKLEBONE DAILY BREAKDOWN < |= == == == == == == |`;
-string totalBonesMessage2 = `> Total Knucklebones in Inventory : [` + currentTotalBones + `]`;
-string dailyBonesMessage3a = `> Daily Knucklebone Collection :`;
-string dailyBonesMessage3b = `> "Adv-Bones" : [` + totalBonesCollected + `/ 95]`;
-string dailyBonesMessage3c = `> "Rest-Bones" : [` + collectedRestBones + `/ 5]`;
-string collectedBonesMessage4 = `> [` + allBonesCollected + `/ 100] Knucklebones Collected For The Day.`;
-string priceBoneMessage5 = `> The Daily Special Is : [` + (daily_Special) + `].`;
-string priceBoneMessage6 = `> Knucklebone Price Of : [` + specialBonePrice + `] Knucklebones.`;
-string priceMallMessage7 = `> Mall Price Of : [` + specialMallPrice + `] Meat.`;
-/**/string canAffordMessage8 = `'> You [CAN] Afford The Daily Special: ` + (daily_Special) + `!`; string cannotAffordMessage10 = `'> You [CANNOT] Afford The Daily Special: ` + (daily_Special) + `!`; string boneMessage11 = `> That\'s A Return Of: [` + meatPerBone + `] Meat/Per/Pnucklebone!`; string boneMessage12 = `> A Value Of[` + rnum(DS_Value) + `% ] Per / Knucklebone.(SpecialMallPrice / MeatPerBone) / (100)`;
-string ownDSMessage13 = `> We Own[` + DSowned + `] ` + (daily_Special);
-string yesBuyMessage14 = `> We[HAVE] Purchased ` + (daily_Special) + ` With Knucklebones.`;
-string noBuyMessage15 = `> We Have[NOT] Purchased ` + (daily_Special) + ` With Knucklebones.`;
-string notTradableMessage16 = `> ` + (daily_Special) + ` Is Not Tradable.`;
-string boneMessageBreak20 = `-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --`;
-string boneMessageEnd = `|= == == == == == == == == == == == == == == == == == == == == == == == == == == == = |`;
+	item kb = $item[knucklebone];
+	item dailySpecial = get_property("_crimboPastDailySpecialItem").to_item();
+	boolean tradable = is_tradeable(dailySpecial);
+	boolean yesBuy_Special = get_property("_crimboPastDailySpecial").to_boolean();
+	int lifeNum = get_property("ascensionsToday").to_int();
+	int legNum = lifeNum + 1;
+	int buy_special = yesBuy_Special.to_int();
+	int item_number = get_property("_crimboPastDailySpecialItem").to_int();
+	int specialMallPrice = mall_price(dailySpecial).to_int();
+	int specialBonePrice = get_property("_crimboPastDailySpecialPrice").to_int();
+	int DSowned = item_amount(dailySpecial).to_int();
+	int currentTotalBones = (available_amount(kb) + closet_amount(kb) + storage_amount(kb) + display_amount(kb));
+	int collectedBones = get_property("_knuckleboneDrops").to_int();
+	int collectedRestBones = get_property(`_knuckleboneRests`).to_int();
+	int totalBonesCollected = to_int(collectedBones - collectedRestBones);
+	int allBonesCollected = to_int(collectedBones);
+	float neededBones = to_int(95 - collectedBones);
+	float neededRestBones = to_int(5 - collectedRestBones);
+	float totalBonesNeeded = to_int(neededBones + neededRestBones);
+	float meatPerBone = to_int(specialMallPrice / specialBonePrice);
+	float xy = modifier_eval(specialMallPrice / (meatPerBone + 1));
+	float DS_Value = modifier_eval(xy / 100);
+	string leg_num = 'Leg' + legNum;
+	string daily_Special = (item_number.to_item());
 
-static {
+	// Message strings
+	string boneMessage1 = `|= == == == == == == = | > KNUCKLEBONE DAILY BREAKDOWN < |= == == == == == == |`;
+	string totalBonesMessage2 = `> Total Knucklebones in Inventory : [` + currentTotalBones + `]`;
+	string dailyBonesMessage3a = `> Daily Knucklebone Collection :`;
+	string dailyBonesMessage3b = `> "Adv-Bones" : [` + totalBonesCollected + `/ 95]`;
+	string dailyBonesMessage3c = `> "Rest-Bones" : [` + collectedRestBones + `/ 5]`;
+	string collectedBonesMessage4 = `> [` + allBonesCollected + `/ 100] Knucklebones Collected For The Day.`;
+	string priceBoneMessage5 = `> The Daily Special Is : [` + (daily_Special) + `].`;
+	string priceBoneMessage6 = `> Knucklebone Price Of : [` + specialBonePrice + `] Knucklebones.`;
+	string priceMallMessage7 = `> Mall Price Of : [` + specialMallPrice + `] Meat.`;
+	string canAffordMessage8 = `'> You [CAN] Afford The Daily Special: ` + (daily_Special) + `!`; string cannotAffordMessage10 = `'> You [CANNOT] Afford The Daily Special: ` + (daily_Special) + `!`; string boneMessage11 = `> That\'s A Return Of: [` + meatPerBone + `] Meat/Per/Pnucklebone!`; string boneMessage12 = `> A Value Of[` + rnum(DS_Value) + `% ] Per / Knucklebone.(SpecialMallPrice / MeatPerBone) / (100)`;
+	string ownDSMessage13 = `> We Own[` + DSowned + `] ` + (daily_Special);
+	string yesBuyMessage14 = `> We[HAVE] Purchased ` + (daily_Special) + ` With Knucklebones.`;
+	string noBuyMessage15 = `> We Have[NOT] Purchased ` + (daily_Special) + ` With Knucklebones.`;
+	string notTradableMessage16 = `> ` + (daily_Special) + ` Is Not Tradable.`;
+	string boneMessageBreak20 = `-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --`;
+	string boneMessageEnd = `|= == == == == == == == == == == == == == == == == == == == == == == == == == == == = |`;
+
 	// logs DSaily special info in KOL/data/Knucklebone Tracking
 	string[string] boneData;
 	boneData["1. " + dailySpecial + " Bone Price:"] = specialBonePrice;
@@ -102,54 +102,51 @@ static {
 	file_to_map("/boneTrack/" + my_name() + "/BoneValue Tracking/VPB.txt", boneVData);
 	boneVData[today_to_string() + "_" + item_number + " VPB:"] = DS_Value;
 	map_to_file(boneVData, "/boneTrack/" + my_name() + "/BoneValue Tracking/VPB.txt");
-}
 
-// returns average VPB
-float total_vpb = 0;
-int count = 0;
-float[string] boneVPBData;
-file_to_map("/boneTrack/" + my_name() + "/BoneValue Tracking/VPB.txt", boneVPBData);
-/*   //print for debugging
-foreach it, boneVPBData in boneVPBData
-	print( it  + boneVPBData);
-*/
-foreach it, data in boneVPBData {
-	total_vpb += data.to_float();
-	count++;
-}
-if (count > 0)
-	; // print for debug print("average: " + (total_vpb / count));
-else
-	print("No data found.");
-float averageVPB = total_vpb / count;
-string[string] AvgVPB;
-map_to_file(AvgVPB, "/boneTrack/" + my_name() + "/BoneValue Tracking/AvgVPB.txt");
-file_to_map("/boneTrack/" + my_name() + "/BoneValue Tracking/AvgVPB.txt", AvgVPB);
+	// returns average VPB
+	float total_vpb = 0;
+	int count = 0;
+	float[string] boneVPBData;
+	file_to_map("/boneTrack/" + my_name() + "/BoneValue Tracking/VPB.txt", boneVPBData);
+	/*   //print for debugging
+	foreach it, boneVPBData in boneVPBData
+		print(it + boneVPBData);
+	*/
+	foreach it, data in boneVPBData {
+		total_vpb += data.to_float();
+		count++;
+	}
+	if (count > 0)
+		; // print for debug print("average: " + (total_vpb / count));
+	else
+		print("No data found.");
+	float averageVPB = total_vpb / count;
+	string[string] AvgVPB;
+	map_to_file(AvgVPB, "/boneTrack/" + my_name() + "/BoneValue Tracking/AvgVPB.txt");
+	file_to_map("/boneTrack/" + my_name() + "/BoneValue Tracking/AvgVPB.txt", AvgVPB);
 
-// returns average MPB
-float total_mpb = 0;
-int count2 = 0;
-float[string] boneMPBData;
-file_to_map("/boneTrack/" + my_name() + "/BoneValue Tracking/MPB.txt", boneMPBData);
-/*   //print for debugging
-foreach it, boneMPBData in boneMPBData
-	print( it  + boneMPBData);
-*/
-foreach it, data in boneMPBData {
-	total_mpb += data.to_float();
-	count2++;
-}
-if (count2 > 0)
-	; // print for debug print("average: " + (total_mpb / count2));
-else
-	print("No data found.");
-float averageMPB = total_mpb / count2;
-string[string] AvgMPB;
-map_to_file(AvgMPB, "/boneTrack/" + my_name() + "/BoneValue Tracking/AvgMPB.txt");
-file_to_map("/boneTrack/" + my_name() + "/BoneValue Tracking/AvgMPB.txt", AvgMPB);
+	// returns average MPB
+	float total_mpb = 0;
+	int count2 = 0;
+	float[string] boneMPBData;
+	file_to_map("/boneTrack/" + my_name() + "/BoneValue Tracking/MPB.txt", boneMPBData);
+	/*   //print for debugging
+	foreach it, boneMPBData in boneMPBData
+		print(it + boneMPBData);
+	*/
+	foreach it, data in boneMPBData {
+		total_mpb += data.to_float();
+		count2++;
+	}
+	if (count2 > 0)
+		; // print for debug print("average: " + (total_mpb / count2));
+	else
+		print("No data found.");
+	float averageMPB = total_mpb / count2;
+	string[string] AvgMPB;
+	map_to_file(AvgMPB, "/boneTrack/" + my_name() + "/BoneValue Tracking/AvgMPB.txt");
+	file_to_map("/boneTrack/" + my_name() + "/BoneValue Tracking/AvgMPB.txt", AvgMPB);
 
-void main()
-{
 	print(boneMessage1, 'navy');
 	print(boneMessageBreak20, 'orange');
 	print(totalBonesMessage2, 'navy');
@@ -208,5 +205,4 @@ void main()
 	// auto-lauch wiki page
 	if ((get_property(`boneTrackEnableWiki`)).to_string() == `true`)
 		cli_execute(`lookup { (daily_Special) }`);
-	exit;
 }
