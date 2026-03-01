@@ -8,6 +8,7 @@ Tracks and Logs: "Daily-Specials" meat per bone & value per bone. && "Average" m
   it will take a wihile to reflect a true number.
 
 To install the script, use the following command in the KoLMafia CLI.
+
 `git checkout https://github.com/donCannoli-burns/boneTrack.ash.git`
   
 Logs all the collected data in KOL/data/bonetrack/ .
