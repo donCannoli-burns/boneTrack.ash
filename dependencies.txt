@@ -1,1 +1,1 @@
-https://github.com/lii2/kolmafia-scripts/blob/master/zlib.ash releases
+https://github.com/lii2/kolmafia-scripts.git releases
