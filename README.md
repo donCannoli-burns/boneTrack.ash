@@ -14,8 +14,8 @@ To install the script, use the following command in the KoLMafia CLI.
 Logs all the collected data in KOL/data/bonetrack/ .
 
 You will receive a one-time prompt, to enable or disable the Wiki auto-launch.
-  To change setting use: set boneTrackEnableWiki=<false/true>  
-  To reset use: set boneTrackEnableWiki=" "
+  To change setting use: `set boneTrackEnableWiki=<false/true>`
+  To reset use: `set boneTrackEnableWiki=" "`
 
 Shout-out to: Prusias,The Dictator, and Thoth19.  
   Their work in ploop and ptrack for refernce gave me the inspiration and the references to make this script.
