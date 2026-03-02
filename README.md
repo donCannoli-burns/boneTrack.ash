@@ -23,7 +23,8 @@
 - While does not currently, combine legs after ascending, to one data set.
 - It does log an additional data sheet, notated buy leg#.
 
-+ To install the script, use the following command in the KoLMafia CLI: `git checkout donCannoli-burns/boneTrack.ash`
++ To install the script, use the following command in the KoLMafia CLI:
+  ````git checkout donCannoli-burns/boneTrack.ash````
   
 + To run the script just type boneTrack into Mafia's CLI
 
