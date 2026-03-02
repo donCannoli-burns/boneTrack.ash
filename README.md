@@ -1,9 +1,9 @@
 :open_file_folder: "boneTrack.ash"\  
 > Script for KOL Mafia. 
-### :round_pushpin:<ins>A Script to Better Manage :bone:Knucklebones\:bone: from ["Skeleton of Crimbo Past"](https://wiki.kingdomofloathing.com/Skeleton_of_Crimbo_Past).</ins>
-- Tracks, Records, and Displays, via CLI, the "Value Data" of the *Daily-Special* and *Knucklebone*.
+### :round_pushpin:<ins>A Script to Better Manage :bone:Knucklebones\:bone: from :skull:["Skeleton of Crimbo Past"](https://wiki.kingdomofloathing.com/Skeleton_of_Crimbo_Past):skull:</ins>
+:small_orange_diamond: Tracks, Records, and Displays, via CLI, the "Value Data" of the *Daily-Special* and *Knucklebone*.
 - Logs All the Collected Data in KOL/data/boneTrack.
-### :round_pushpin: <ins>boneTrack.ash Tracks, Records, and Displays:</ins>
+### :round_pushpin: <ins>boneTrack.ash Tracks, Records, and Displays the Following:</ins>
 | <ins>Daily</ins> | <ins>Value</ins> |
 | --- | --- |
 | the Skeleton of Crimbo Past | *Daily-Special Item* |
