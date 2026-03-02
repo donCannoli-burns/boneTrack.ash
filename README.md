@@ -1,21 +1,23 @@
-# boneTrack.ash
-+ A script for KOL Mafia. 
-+ Used to better manage Kuncklebones from Skeleton of Crimbo Past.
-> Tracks and logs, the value of the *Daily-Special* and Knucklebones.
-> Logs all the collected data in KOL/data/bonetrack.
-+ Displays(via the CLI), Tracks, and Logs the *Daily-Special* from the Skeleton of Crimbo Past.<br/>
-> Along With Daily Knucklebone Tracking: Total KBones in Invty, Collected KBones, Needed KBones.
-> boneTrack also records:
->> Knucklebone Price.
->> If *D-S* Tradeable.
->> Mall Price.
->> If You Already Own *D-S*. 
->> *D-S* "Meat Per Bone" & "Value Per Bone". 
->> *D-S* Item Number.
->> If You Purchased *D-S* from SoCP.<br/>
->> Finally: A Runnning "Average" of all *D-S* "Meat Per Bone" & "Value Per Bone".
->> >NOTE: "Average" meat per bone and value per bone is generated from the *D-S* items YOU have logged with boneTrack.
->> >It will take a while to reflect a true *MPB/VPB* number/value.
++ A Script for KOL Mafia. 
+  Used to Better Manage Knucklebones from Skeleton of Crimbo Past.
+  Tracks, Records, and Displays, via CLI, the "Value Data" of the *Daily-Special* and *Knucklebone*.
+  Logs All the Collected Data in KOL/data/boneTrack.
++ Tracks, Records, and Displays:
+> The *Daily-Special* from the Skeleton of Crimbo Past.<br/>
+> Daily *Knucklebone* Progression:
+>> Total KBones in Invty, Collected KBones, Needed KBones.
+
++ boneTrack Also Records:
+> *Knucklebone* Price.
+> If *Daily-Special* Tradeable.
+> Mall Price.
+> If You Already Own *Daily-Special*. 
+> *Daily-Special* "Meat Per Bone" & "Value Per Bone". 
+> *Daily-Special* Item Number.
+> If You Purchased *Daily-Special* from SoCP.<br/>
+> A Runnning "Average" of all *Daily-Special* "Meat Per Bone" & "Value Per Bone".
+>>+ NOTE: "Average" meat per bone and value per bone is generated from the *Daily-Special* items YOU have logged with boneTrack.
+>> It will take a while to reflect a true *MPB/VPB* number/value.
 
 
 ![Example Image](img/BTimg.png)
