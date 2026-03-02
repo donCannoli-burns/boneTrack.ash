@@ -16,7 +16,7 @@
 >> If You Purchased *D-S* from SoCP.<br/>
 > Finally: A Runnning "Average" of all *D-S* "Meat Per Bone" & "Value Per Bone".
 
-![Example Image](donCannoli-burns/boneTrack.ash/img/BTimg.png)
+![Example Image](img/BTimg.png)
       
 - Note: "Average" meat per bone and value per bone is generated from the *D-S* items YOU have logged with boneTrack.
 - It will take a while to reflect a true *MPB/VPB* number/value.
