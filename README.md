@@ -1,7 +1,7 @@
 
 > 📂: `"boneTrack.ash"`  
-> A data parsing script for KOL Mafia for,\
-> Eaiser Management of "The Skeleton of Crimbo Past"
+> A data parsing script for KOL Mafia.\
+> Purpose: Eaiser Management of "The Skeleton of Crimbo Past"
 
 # :dagger: <sub>"<ins> _boneTrack.ash_ </ins>"</sub><br/> 
 &#10240; 🔹 Tracks and Displays, via CLI.<br/>
