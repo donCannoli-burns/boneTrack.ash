@@ -36,11 +36,11 @@
 &#10240;
 
 >[!NOTE]
-> *"Average" meat per bone and value per bone is generated from
+> 🔹 *"Average" meat per bone and value per bone is generated from
 > the Daily-Special items **YOU** have logged with boneTrack.
 > It will take a while to reflect a true MPB/VPB number/value.* <br/>
 >
-> *While script does not currently, combine legs after ascending, into a single data set.<br/>
+> 🔹 *While script does not currently, combine legs after ascending, into a single data set.<br/>
 > It does log an additional data sheet, notated buy leg number.*
 
 &#10240;
