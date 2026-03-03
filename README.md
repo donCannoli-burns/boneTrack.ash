@@ -3,7 +3,8 @@
                    `A data parsing script for KOL Mafia.`
 
 #  :dagger: <sub><ins>A Script to Better Manage </ins><br/> &#10240; &#10240; <ins>Knucklebones From ["Skeleton of Crimbo Past"](https://wiki.kingdomofloathing.com/Skeleton_of_Crimbo_Past)</ins></sub><br/> 
- &#10240; &#10240; &#10240; &#10240; &#10240; :small_blue_diamond: Tracks, Records, and Displays, via CLI, the "Value Data" of the *Daily-Special* and *Knucklebone*.\
+ &#10240; &#10240; &#10240; &#10240; &#10240; :small_blue_diamond: Tracks, Records, and Displays, via CLI.\
+ &#10240; &#10240; &#10240; &#10240; &#10240; :small_blue_diamond: "Value Data" of the *Daily-Special* and *Knucklebone*.\
  &#10240; &#10240; &#10240; &#10240; &#10240; :small_blue_diamond: Logs All the Collected Data in KOL/data/boneTrack.`
 ## :dagger: <sub> `boneTrack.ash` <ins>_Tracks, Records, and Displays the Following:_</ins></sub>
   | &#10240; &#10240; &#10240; &#10240; <sup>🔹</sup> <ins>_*Daily*_ _*Variables*_ </ins> <sup>🔹</sup> | <sup>🔹</sup> <ins>_*Value*_</ins> <sup>🔹</sup> |
