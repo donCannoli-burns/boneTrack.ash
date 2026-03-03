@@ -5,9 +5,9 @@
 
 &#10240;
 #  :dagger: <sub><ins>"_boneTrack.ash_"</ins></sub><br/> 
- &#10240; &#10240; &#10240; &#10240; &#10240; :small_blue_diamond: Tracks and Displays, via CLI.\
- &#10240; &#10240; &#10240; &#10240; &#10240; :small_blue_diamond: "Value Data" of the *Daily-Special* and *Knucklebone*.\
- &#10240; &#10240; &#10240; &#10240; &#10240; :small_blue_diamond: Records All the Collected Data in KOL/data/boneTrack.`
+ &#10240; &#10240; :small_blue_diamond: Tracks and Displays, via CLI.<br/>
+ &#10240; &#10240; :small_blue_diamond: "Value Data" of the *Daily-Special* and *Knucklebone*.<br/>
+ &#10240; &#10240;  :small_blue_diamond: Records All the Collected Data in KOL/data/boneTrack.<br/>
 ## 🔹 <sub>  <ins>_Tracks, Records, and Displays the Following:_</ins></sub>
   | &#10240; &#10240; &#10240; &#10240; <sup>🔹</sup> <ins>_*Daily*_ _*Variables*_ </ins> <sup>🔹</sup> | <sup>🔹</sup> <ins>_*Value*_</ins> <sup>🔹</sup> |
   | :---                |      :---:      |
