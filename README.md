@@ -1,12 +1,14 @@
 
-:open_file_folder: `"boneTrack.ash"`  
-                   `A data parsing script for KOL Mafia.`
+> :open_file_folder: `"boneTrack.ash"`  
+> A data parsing script for KOL Mafia for,\
+> Eaiser Management of "The Skeleton of Crimbo Past"
 
-#  :dagger: <sub><ins>A Script to Better Manage </ins><br/> &#10240; &#10240; <ins>Knucklebones From ["Skeleton of Crimbo Past"](https://wiki.kingdomofloathing.com/Skeleton_of_Crimbo_Past)</ins></sub><br/> 
- &#10240; &#10240; &#10240; &#10240; &#10240; :small_blue_diamond: Tracks, Records, and Displays, via CLI.\
+&#10240;
+#  :dagger: <sub><ins>"_boneTrack.ash_"</ins></sub><br/> 
+ &#10240; &#10240; &#10240; &#10240; &#10240; :small_blue_diamond: Tracks and Displays, via CLI.\
  &#10240; &#10240; &#10240; &#10240; &#10240; :small_blue_diamond: "Value Data" of the *Daily-Special* and *Knucklebone*.\
- &#10240; &#10240; &#10240; &#10240; &#10240; :small_blue_diamond: Logs All the Collected Data in KOL/data/boneTrack.`
-## :dagger: <sub> `boneTrack.ash` <ins>_Tracks, Records, and Displays the Following:_</ins></sub>
+ &#10240; &#10240; &#10240; &#10240; &#10240; :small_blue_diamond: Records All the Collected Data in KOL/data/boneTrack.`
+## 🔹 <sub>  <ins>_Tracks, Records, and Displays the Following:_</ins></sub>
   | &#10240; &#10240; &#10240; &#10240; <sup>🔹</sup> <ins>_*Daily*_ _*Variables*_ </ins> <sup>🔹</sup> | <sup>🔹</sup> <ins>_*Value*_</ins> <sup>🔹</sup> |
   | :---                |      :---:      |
   | The Skeleton of Crimbo Past | *Daily-Special* *Item* |
@@ -49,19 +51,24 @@
       
 
 &#10240;
-## :dagger: <ins>To Install the Script, Use the Following Command in the KoLMafia CLI:</ins><br/>
-      git checkout donCannoli-burns/boneTrack.ash
-#####  &#10240; &#10240; &#10240; &#10240; &#10240; :small_blue_diamond: To Run the Script Just Type `boneTrack` into Mafia's CLI.
+## :dagger: <ins>Installation / Uninstallation</ins><br/>
+ &#10240; 🔹 To install, run the following on the gCLI:
+ >     git checkout https://github.com/donCannoli-burns/boneTrack.ash.git
+ &#10240; 🔹 To uninstall, run the following on the gCLI:
+ >     git delete https://github.com/donCannoli-burns/boneTrack.ash.git
+ &#10240; 🔹 To Start the Script, run the following on the gCLI:
+ >      boneTrack
 
 &#10240;
 &#10240;
 
-## :bell: <ins>You Will Receive a One-Time Prompt, to Enable or Disable the Wiki Auto-Launch.</ins><br/>
-#####  &#10240; &#10240; &#10240; &#10240; &#10240; :small_blue_diamond: To [ disable | enable ] Wiki Auto-Launch Use:
-       set boneTrackEnableWiki = [false|true]
+## :bell: <ins>Enable or Disable Wiki Auto-Launch.</ins><br/>
+&#10240; :small_blue_diamond: A One-Time Prompt Apperars To Disable or Enable Wiki Auto-Launch<br/>
+&#10240; &#10240; :small_blue_diamond: To Manually Change Wiki Auto-Launch settings, run the following on the gCLI:
+>       set boneTrackEnableWiki = [false|true]
 &#10240;
-#####  &#10240; &#10240; &#10240; &#10240; &#10240; :small_blue_diamond: To Reset Wiki Auto-Launch Prompt Use: 
-       set boneTrackEnableWiki =" "
+&#10240; &#10240; :small_blue_diamond: To Reset Wiki Auto-Launch Prompt , run the following on the gCLI: 
+>       set boneTrackEnableWiki =" "
 &#10240;
 &#10240;
 
@@ -72,10 +79,11 @@
 >     
 > 🔊  Shout-Out To: [_Damian Domino Davis_](https://github.com/DamianDominoDavis)<br/>
 >> *For their time and insite, streamling the code.*<br/>
->> Many thanks!*
+> *Many thanks!*
 
 &#10240;
 &#10240;
+
 
 > " *This is my first ever script any feedback/constuctive criticism is greatly welcomed.<br/>
 > Thank for checking it out, enjoy!"<br/>
