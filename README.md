@@ -19,7 +19,7 @@
   | :clipboard: | *Total* <sup>🦴</sup> *in Invty*|
   | :heavy_check_mark: | *Collected* <sup>🦴</sup>|
   | :x: | *Needed* <sup>🦴</sup> | 
-  | Daily-Special | *Tradeable* *true* / *false* | 
+  | <sup>🔹</sup> <ins>_Daily-Special_</ins> <sup>🔹</sup> | *Tradeable* *true* / *false* | 
   | 🥩 | *Mall Price* | 
   | 🥩 / 🦴 | *Meat Per Bone* |
   | 🦴 / 🥩 |*Value Per Bone* | 
