@@ -4,15 +4,15 @@
 > Purpose: Eaiser Management of "The Skeleton of Crimbo Past"
 
 # :dagger: <sub>"<ins> _boneTrack.ash_ </ins>"</sub><br/> 
-&#10240; 🔹 Tracks and Displays, via CLI.<br/>
+&#10240; 🔹 Tracks and Displays, *via* CLI.<br/>
 &#10240; 🔹 Knucklebone Daily Count and Progression.<br/>
-&#10240; 🔹 "Value Data" of the *Daily-Special* and *Knucklebone*.<br/>
-&#10240; 🔹 Records all the Collected Data in KOL/data/boneTrack.<br/>
+&#10240; 🔹 "*Value Data*" of the Daily-Special and Knucklebone.<br/>
+&#10240; 🔹 Records all the Collected Data in `KOL/data/boneTrack`<br/>
 ## &#10240; &#10240;  <sub>🔹<ins>_Tracks, Records, And Displays The Following_</ins>🔹</sub>
-  | <sup>🔹</sup> <ins>_*Daily*_ _*Variables*_ </ins> <sup>🔹</sup> | <sup>🔹</sup>-<ins>_*Value*_ </ins>-<sup>🔹</sup> |
+  | ` 🔹        Daily Variables        🔹 ` | ` 🔹     Value     🔹 ` |
   | :---:                |      :---:      |
   | The Skeleton of Crimbo Past | -*Daily-Special* *Item*- |
-  | <sup>🔹</sup><ins>_Daily-Special Item_</ins><sup>🔹</sup> | <sup>🔹</sup>-📈-<sup>🔹</sup> |
+  | ` 🔹       Daily-Special Item       🔹 ` | ` 🔹     -📈-     🔹 ` |
   | Item | -#️⃣- |
   | If Owned | -*Qty*- |
   | Store| -*Price*<sup>🦴</sup>- |
@@ -21,11 +21,11 @@
   | Mall | -*Price*<sup>🥩</sup>- | 
   |  Meat Per Bone | -🥩➗🦴-
   |  Value Per Bone % | -🦴 / 🥩-|
-  |<sup>🔹</sup> <ins>_Daily *Knucklebone* Progression_</ins><sup>🔹</sup>|<sup>🔹</sup>-📓-<sup>🔹</sup>|
+  |` 🔹 Daily Knucklebone Progression 🔹 `|` 🔹     -📓-     🔹 `|
   | 📋 | -*Total* <sup>🦴</sup> *in Inv*-|
   | ✔️ | -*Collected* <sup>🦴</sup>-|
   | ❌ | -*Needed* <sup>🦴</sup>- | 
-  |<sup>🔹</sup><ins>_Life-Time_</ins> <sup>🔹</sup>|<sup>🔹</sup><ins>_*Daily-Special* Value_</ins> <sup>🔹</sup>|
+  | ` 🔹           Life-Time           🔹 `|` 🔹 Daily-Special 🔹 `|
   | Average MpB | -🥩➗🦴-     |
   | Average VpB | -🦴 / 🥩-      | 
   | Daily-Special Purchased | -*Qty*-      |
