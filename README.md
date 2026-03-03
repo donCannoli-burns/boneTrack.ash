@@ -2,7 +2,7 @@
 :open_file_folder: `"boneTrack.ash"`  
                    `A data parsing script for KOL Mafia.`
 
-#  :dagger: <sub><ins>A Script to Better Manage Knucklebones\ from ["Skeleton of Crimbo Past"](https://wiki.kingdomofloathing.com/`Skeleton_of_Crimbo_Past)</ins></sub><br/> 
+#  :dagger: <sub><ins>A Script to Better Manage </ins><br/> &#10240; &#10240; <ins>Knucklebones From ["Skeleton of Crimbo Past"](https://wiki.kingdomofloathing.com/`Skeleton_of_Crimbo_Past)</ins></sub><br/> 
  &#10240; &#10240; &#10240; &#10240; &#10240; :small_blue_diamond: Tracks, Records, and Displays, via CLI, the "Value Data" of the *Daily-Special* and *Knucklebone*.\
  &#10240; &#10240; &#10240; &#10240; &#10240; :small_blue_diamond: Logs All the Collected Data in KOL/data/boneTrack.`
 ## :dagger: <sub> `boneTrack.ash` <ins>_Tracks, Records, and Displays the Following:_</ins></sub>
