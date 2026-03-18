@@ -171,7 +171,7 @@ void printReport(BoneStats s, float averageVPB, float averageMPB) {
 	// bone inventory & daily collection
 	print(`> Total Knucklebones in Inventory: [{s.currentTotalBones}]`, 'navy');
 	print(`> Daily Knucklebone Collection:`, 'navy');
-	print(`>   "Adv-Bones"  : [{s.totalBonesCollected}/ 95]`, 'navy');
+	print(`>   "Adv-Bones"  : [{s.totalBonesCollected - 5}/ 95]`, 'navy');
 	print(`>   "Rest-Bones" : [{s.collectedRestBones}/ 5]`,  'navy');
 	string collectedMsg = `> [{s.allBonesCollected}/ 100] Knucklebones Collected For The Day.`;
 	print(collectedMsg, (s.allBonesCollected == 100) ? 'green' : 'red');
