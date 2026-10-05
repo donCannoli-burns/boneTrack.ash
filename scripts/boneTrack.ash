@@ -77,11 +77,11 @@ BoneStats gatherStats() {
 	return s;
 }
 
-void updateMetricLog(string path, string key, float value) {
+void updateMetricLog(string filePath, string key, float value) {
 	string[string] data;
-	file_to_map(path, data);
+	file_to_map(filePath, data);
 	data[key] = value;
-	map_to_file(data, path);
+	map_to_file(data, filePath);
 }
 
 // file logging daily-special snapshot and rolling MPB/VPB
@@ -122,11 +122,11 @@ record Averages {
 	float mpb;
 };
 
-float averageFromFile(string path, string label) {
+float averageFromFile(string filePath, string label) {
 	float total = 0;
 	int count = 0;
 	float[string] data;
-	file_to_map(path, data);
+	file_to_map(filePath, data);
 
 	foreach key, value in data {
 		total += value;
