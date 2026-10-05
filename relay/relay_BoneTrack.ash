@@ -69,7 +69,7 @@ void appendStringMap(string title, string fileName, string[string] values, boole
 	page.append("</div></details>");
 }
 
-void appendFloatMap(string title, string fileName, string[string] labels, float[string] values) {
+void appendFloatMap(string title, string fileName, float[string] values) {
 	page.append("<details><summary>" + html(title) + " &mdash; " + count(values) + " rows</summary>");
 	page.append("<div class='section'><div class='file'>data" + html(fileName) + "</div>");
 
@@ -78,12 +78,8 @@ void appendFloatMap(string title, string fileName, string[string] labels, float[
 	}
 	else {
 		page.append("<div class='tablewrap'><table><thead><tr><th>Entry</th><th class='num'>Value</th></tr></thead><tbody>");
-		foreach key, value in values {
-			string displayKey = key;
-			if (labels contains key)
-				displayKey = labels[key];
-			page.append("<tr><td>" + html(displayKey) + "</td><td class='num'>" + to_string(value, "%.3f") + "</td></tr>");
-		}
+		foreach key, value in values
+			page.append("<tr><td>" + html(key) + "</td><td class='num'>" + to_string(value, "%.3f") + "</td></tr>");
 		page.append("</tbody></table></div>");
 	}
 
@@ -104,17 +100,10 @@ void main() {
 	string[string] purchases;
 	float[string] mpb;
 	float[string] vpb;
-	string[string] rawLabels;
-
 	file_to_map(snapshotFile, snapshot);
 	file_to_map(valueDir + "BUY.txt", purchases);
 	file_to_map(valueDir + "MPB.txt", mpb);
 	file_to_map(valueDir + "VPB.txt", vpb);
-
-	foreach key, value in mpb
-		rawLabels[key] = key;
-	foreach key, value in vpb
-		rawLabels[key] = key;
 
 	page.append("<!doctype html><html><head><meta charset='utf-8'>");
 	page.append("<meta name='viewport' content='width=device-width,initial-scale=1'>");
@@ -142,8 +131,8 @@ void main() {
 
 	appendStringMap("Current Daily Snapshot", snapshotFile, snapshot, true);
 	appendStringMap("Daily-Special Purchase Log", valueDir + "BUY.txt", purchases, false);
-	appendFloatMap("Meat Per Knucklebone History", valueDir + "MPB.txt", rawLabels, mpb);
-	appendFloatMap("Value Per Knucklebone History", valueDir + "VPB.txt", rawLabels, vpb);
+	appendFloatMap("Meat Per Knucklebone History", valueDir + "MPB.txt", mpb);
+	appendFloatMap("Value Per Knucklebone History", valueDir + "VPB.txt", vpb);
 
 	page.append("<div class='foot'>BoneTrack relay dashboard &bull; reads existing data files only</div>");
 	page.append("</div></body></html>");
