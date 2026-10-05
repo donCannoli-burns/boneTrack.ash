@@ -9,9 +9,12 @@ int trigger_MeatPerBone_Low   =     1000;
 int trigger_ValuePerBone_High =       15;
 int trigger_ValuePerBone_Low  =        7;
 
+int ownedAmount(item x) {
+	return item_amount(x) + closet_amount(x) + storage_amount(x) + display_amount(x) + equipped_amount(x);
+}
+
 boolean OwnDailySpecial(item x) {
-	print(`> Testing ownership of [{x}]`, "navy");
-	return (0 < available_amount(x) + closet_amount(x) + storage_amount(x) + display_amount(x));
+	return ownedAmount(x) > 0;
 }
 
 // ask once if wiki should auto-launch, store as pref
@@ -63,20 +66,32 @@ BoneStats gatherStats() {
 	s.lifeNum           = get_property("ascensionsToday").to_int();
 	s.buy_special       = s.yesBuy_Special.to_int();
 	s.item_number       = get_property("_crimboPastDailySpecialItem").to_int();
-	s.specialMallPrice  = mall_price(s.dailySpecial).to_int();
+	s.specialMallPrice  = mall_price(s.dailySpecial);
 	s.specialBonePrice  = get_property("_crimboPastDailySpecialPrice").to_int();
-	s.DSowned           = item_amount(s.dailySpecial).to_int();
-	s.currentTotalBones = available_amount(kb) + closet_amount(kb) + storage_amount(kb) + display_amount(kb);
+	s.DSowned           = ownedAmount(s.dailySpecial);
+	s.currentTotalBones = ownedAmount(kb);
 	s.collectedBones     = get_property("_knuckleboneDrops").to_int();
 	s.collectedRestBones = get_property("_knuckleboneRests").to_int();
 	s.totalBonesCollected = s.collectedBones - s.collectedRestBones;
 	s.allBonesCollected   = s.collectedBones;
-	s.meatPerBone       = to_int(s.specialMallPrice / s.specialBonePrice);
-	float xy            = modifier_eval(s.specialMallPrice / (s.meatPerBone + 1));
-	s.DS_Value          = modifier_eval(xy / 100);
+	s.meatPerBone = (s.specialBonePrice > 0)
+		? to_int(s.specialMallPrice / s.specialBonePrice)
+		: 0;
+	// Preserve the original VPB calculation, but use normal arithmetic
+	// and avoid dividing by zero when no usable mall value exists.
+	s.DS_Value = (s.meatPerBone > 0)
+		? (s.specialMallPrice / (s.meatPerBone + 1.0)) / 100.0
+		: 0;
 	s.leg_num           = "Leg" + (s.lifeNum + 1);
 	s.daily_Special     = s.item_number.to_item();
 	return s;
+}
+
+void updateMetricLog(string path, string key, float value) {
+	string[string] data;
+	file_to_map(path, data);
+	data[key] = value;
+	map_to_file(data, path);
 }
 
 // file logging daily-special snapshot and rolling MPB/VPB
@@ -104,16 +119,9 @@ void logDailyData(BoneStats s) {
 	}
 
 	// rolling meat-per-bone / value-per-bone logs
-	string mpbPath = base + "/BoneValue Tracking/MPB.txt";
-	string[string] boneMData;
-	file_to_map(mpbPath, boneMData);
-	boneMData[today_to_string() + "_" + s.item_number + " MPB:"] = s.meatPerBone;
-	map_to_file(boneMData, mpbPath);
-	string vpbPath = base + "/BoneValue Tracking/VPB.txt";
-	string[string] boneVData;
-	file_to_map(vpbPath, boneVData);
-	boneVData[today_to_string() + "_" + s.item_number + " VPB:"] = s.DS_Value;
-	map_to_file(boneVData, vpbPath);
+	string metricKey = today_to_string() + "_" + s.item_number;
+	updateMetricLog(base + "/BoneValue Tracking/MPB.txt", metricKey + " MPB:", s.meatPerBone);
+	updateMetricLog(base + "/BoneValue Tracking/VPB.txt", metricKey + " VPB:", s.DS_Value);
 }
 
 
@@ -123,40 +131,30 @@ record Averages {
 	float mpb;
 };
 
+float averageFromFile(string path, string label) {
+	float total = 0;
+	int count = 0;
+	float[string] data;
+	file_to_map(path, data);
+
+	foreach key, value in data {
+		total += value;
+		count++;
+	}
+
+	if (count == 0) {
+		print("No " + label + " data found.");
+		return 0;
+	}
+
+	return total / count;
+}
+
 Averages computeAverages() {
 	string base = "/boneTrack/" + my_name() + "/BoneValue Tracking/";
 	Averages avg;
-
-	// Average Value-Per-Bone
-	float total_vpb = 0;
-	int   vpb_count = 0;
-	float[string] boneVPBData;
-	file_to_map(base + "VPB.txt", boneVPBData);
-	foreach it, data in boneVPBData {
-		total_vpb += data.to_float();
-		vpb_count++;
-	}
-	if (vpb_count == 0) { print("No VPB data found."); }
-	avg.vpb = (vpb_count > 0) ? (total_vpb / vpb_count) : 0;
-	string[string] AvgVPB;
-	map_to_file(AvgVPB, base + "AvgVPB.txt");
-	file_to_map(base + "AvgVPB.txt", AvgVPB);
-
-	// Average Meat-Per-Bone
-	float total_mpb = 0;
-	int   mpb_count = 0;
-	float[string] boneMPBData;
-	file_to_map(base + "MPB.txt", boneMPBData);
-	foreach it, data in boneMPBData {
-		total_mpb += data.to_float();
-		mpb_count++;
-	}
-	if (mpb_count == 0) { print("No MPB data found."); }
-	avg.mpb = (mpb_count > 0) ? (total_mpb / mpb_count) : 0;
-	string[string] AvgMPB;
-	map_to_file(AvgMPB, base + "AvgMPB.txt");
-	file_to_map(base + "AvgMPB.txt", AvgMPB);
-
+	avg.vpb = averageFromFile(base + "VPB.txt", "VPB");
+	avg.mpb = averageFromFile(base + "MPB.txt", "MPB");
 	return avg;
 }
 
@@ -179,8 +177,9 @@ void printReport(BoneStats s, float averageVPB, float averageMPB) {
 	// affordability
 	print(`> The Daily Special Is: [{s.daily_Special}].`, 'navy');
 	print(`> Knucklebone Price Of: [{s.specialBonePrice}] Knucklebones.`, 'navy');
-	string affordMsg = `> You [CAN{(s.currentTotalBones > s.specialBonePrice) ? "" : "NOT"}] Afford The Daily Special: ${s.daily_Special}!`;
-	print(affordMsg, (s.currentTotalBones > s.specialBonePrice) ? 'green' : 'red');
+	boolean canAfford = s.specialBonePrice > 0 && s.currentTotalBones >= s.specialBonePrice;
+	string affordMsg = `> You [CAN{canAfford ? "" : "NOT"}] Afford The Daily Special: ${s.daily_Special}!`;
+	print(affordMsg, canAfford ? 'green' : 'red');
 	print(div, 'orange');
 	// value metrics
 	if (s.tradable) {
@@ -216,7 +215,8 @@ void printReport(BoneStats s, float averageVPB, float averageMPB) {
 	// ownership & purchase
 	string ownMsg = `> We Own [{s.DSowned}] {s.daily_Special}`;
 	print(ownMsg, OwnDailySpecial(s.dailySpecial) ? 'green' : 'red');
-	print(`> We {(s.yesBuy_Special) ? "[HAVE]" : "[HAVE NOT]"} Purchased {s.daily_Special} With Knucklebones.`, 'green');
+	print(`> We {(s.yesBuy_Special) ? "[HAVE]" : "[HAVE NOT]"} Purchased {s.daily_Special} With Knucklebones.`,
+		s.yesBuy_Special ? 'green' : 'red');
 	print(div, 'orange');
 	// historical averages
 	print(`> As of: [{today_to_string()}]`, 'navy');
@@ -228,7 +228,7 @@ void printReport(BoneStats s, float averageVPB, float averageMPB) {
 
 // optional wiki launcher
 void maybeOpenWiki(string daily_Special) {
-	if (get_property(`boneTrackEnableWiki`).to_string() == `true`)
+	if (get_property("boneTrackEnableWiki").to_boolean())
 		cli_execute(`lookup ` + daily_Special);
 }
 
