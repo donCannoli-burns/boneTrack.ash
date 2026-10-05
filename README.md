@@ -56,6 +56,13 @@
  &#10240; 🔹 To start the script, run the following on the gCLI:
  >      boneTrack
 
+## :bar_chart: <ins>Relay Dashboard</ins><br/>
+&#10240; 🔹 Open KoLmafia's Relay Browser.<br/>
+&#10240; 🔹 In the top `-run script-` menu, choose **BoneTrack**.<br/>
+&#10240; 🔹 The dashboard is read-only and displays the existing `data/boneTrack/<player>/` tracking files.<br/>
+&#10240; 🔹 It shows the current daily snapshot, purchase history, MPB history, VPB history, and rolling averages.<br/>
+&#10240; 🔹 Use **Refresh data** on the dashboard to reload the files from disk.<br/>
+
 &#10240;
 &#10240;
 
