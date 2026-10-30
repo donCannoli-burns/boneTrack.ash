@@ -1,3 +1,14 @@
+# boneTrack.ash — retirement notice
+
+> **Retiring standalone repository (October 30, 2026).** The maintained `boneTrack.ash` tracker and `relay_BoneTrack.ash` dashboard are now provided by [don_custom_functions](https://github.com/donCannoli-burns/don_custom_functions), with shared ASH helpers in [don-ash-lib](https://github.com/donCannoli-burns/don-ash-lib). Use those repositories for new installs and further development.
+>
+> The standalone project is preserved as legacy documentation while consolidation into [Retired-KOL-Scripts](https://github.com/donCannoli-burns/Retired-KOL-Scripts) is **planned in approximately 30 days (late November 2026)**. The move has **not** happened yet.
+
+**Migration:** back up `data/boneTrack/` and locally modified scripts. Update/install the two maintained repositories, verify `boneTrack.ash` and `relay_BoneTrack.ash`, and only then consider deleting the redundant old Git checkout. Do **not** remove historical player tracking data. Both checkouts install the same script name, so avoid source ownership conflicts. See the [maintained migration details](https://github.com/donCannoli-burns/don_custom_functions#official-bonefarm--bonetrack-absorption-2026-10-29).
+
+The original README follows for historical reference.
+
+---
 
 > 📂: `"boneTrack.ash"`  
 > A data parsing script for KOL Mafia.\
